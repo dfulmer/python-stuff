@@ -1,5 +1,9 @@
 FROM python:3
 
+COPY requirements.txt ./
+RUN pip install --no-cache-dir --upgrade pip \
+  && pip install --no-cache-dir -r requirements.txt
+
 ARG UNAME=app
 ARG UID=1000
 ARG GID=1000
@@ -11,12 +15,8 @@ USER $UNAME
 
 WORKDIR /app
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
 COPY --chown=${UID}:${GID} . /app
 
-#CMD ["tail", "-f", "/dev/null"]
-CMD [ "python", "./helloworld.py" ]
+CMD ["tail", "-f", "/dev/null"]
 
 LABEL maintainer="dfulmer@umich.edu"

@@ -1,14 +1,20 @@
 import unittest
+from helloworld import Helloworld
 
-class TestStringMethods(unittest.TestCase):
-        
-    def test_begin(self):
-        helloworldmessage = 'Hello world!'
-        self.assertTrue(helloworldmessage.startswith('Hello'))
+class HelloWorldTests(unittest.TestCase):
+  def test_helloworld(self):
+    amessage = Helloworld()
+    self.assertEqual(amessage.message, "Hello world!")
 
-    def test_end(self):
-        helloworldmessage = 'Hello world!'
-        self.assertTrue(helloworldmessage.endswith('world!'))
+  def test_helloworld_beginning(self):
+    amessage = Helloworld()
+    string_message = str(amessage.message)
+    self.assertTrue(string_message.startswith('Hello'))
+
+  def test_helloworld_ending(self):
+    amessage = Helloworld()
+    string_message = str(amessage.message)
+    self.assertTrue(string_message.endswith('world!'))
 
 if __name__ == '__main__':
       unittest.main()
